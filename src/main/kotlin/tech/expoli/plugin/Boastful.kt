@@ -37,7 +37,7 @@ class Boastful(lotsPath: String) {
                 val index = lots!!.indices.random()
                 lotMap[id] = index
                 val lot = lots!![index]
-                "夸语第" + lot.getString("uid") + "\n" +
+                "夸语第" + lot.getString("uid") + "条\n" +
                         lot.getString("sign") + "\n" +
                         "^_^"
             }
