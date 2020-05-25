@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "expoli"
-version = "0.3.0"
+version = "0.4.0"
 
 repositories {
     maven(url = "https://dl.bintray.com/kotlin/kotlin-eap")
