@@ -4,6 +4,7 @@ import net.mamoe.mirai.console.command.ContactCommandSender
 import net.mamoe.mirai.console.command.registerCommand
 import net.mamoe.mirai.console.plugins.PluginBase
 import net.mamoe.mirai.contact.Group
+import net.mamoe.mirai.event.subscribeFriendMessages
 import net.mamoe.mirai.event.subscribeGroupMessages
 
 
@@ -33,16 +34,23 @@ object BoastfulMain : PluginBase() {
         registerCommands()
 
         subscribeGroupMessages {
-            (case("夸夸我", ignoreCase = true, trim = true)){
+            (case("夸夸我", ignoreCase = true, trim = true) or
+                    case("撩撩我", ignoreCase = true, trim = true) or
+                    contains("撩一撩")){
                 if (groupList.contains(this.group.id)) {
                     this.quoteReply(
-                            boastful!!.sign(sender.id)
+                        boastful!!.sign(sender.id)
                     )
                 }
             }
         }
-    }
 
+        subscribeFriendMessages {
+            (case("撩撩我", ignoreCase = true, trim = true) or contains("撩一撩")){
+                this.reply(boastful!!.sign(sender.id))
+            }
+        }
+    }
 
     override fun onDisable() {
         super.onDisable()

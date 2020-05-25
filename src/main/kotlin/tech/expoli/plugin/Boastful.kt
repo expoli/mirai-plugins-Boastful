@@ -29,34 +29,14 @@ class Boastful(lotsPath: String) {
      */
     fun sign(id: Long): String {
         return if (lots != null) {
-            // checkDay()
-            // if (lotMap.contains(id)) {
-            //     val index: Int = lotMap.getValue(id)
-            //     val lot = lots!![index]
-            //     "^_^ 今天已经夸过了你了呦,明天再来试试新花样吧! ^_^" + "\n" +
-            //             "今天的夸语是：" + lot.getString("uid") +
-            //             lot.getString("sign") + "^_^"
-            // } else {
             val index = lots!!.indices.random()
             lotMap[id] = index
             val lot = lots!![index]
-            "夸语第" + lot.getString("uid") + "条\n" +
+            "第" + lot.getString("uid") + "条\n" +
                     lot.getString("sign") + "^_^"
             // }
         } else {
             "Lots init failed!"
-        }
-    }
-
-
-    /**
-     * 检查当前时间，换了天数就把记录的Map清楚掉
-     */
-    private fun checkDay() {
-        val dayTemp = Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
-        if (dayTemp != day) {
-            day = dayTemp
-            lotMap.clear()
         }
     }
 }
