@@ -4,7 +4,7 @@ import java.io.OutputStream
 import java.util.*
 
 plugins {
-    kotlin("jvm") version "1.3.71"
+    kotlin("jvm") version "1.5.31"
     java
     id("com.github.johnrengelman.shadow") version "5.2.0"
 }
